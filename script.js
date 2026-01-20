@@ -6,6 +6,13 @@ const amountInput = form.querySelector("input[type='number']");
 const balanceAmount = document.querySelector(".balance-amount");
 const expenseList = document.querySelector(".expense-list");
 
+const donutCtx = document.getElementById("donutChart").getContext("2d");
+const lineCtx = document.getElementById("lineChart").getContext("2d");
+
+let donutChart;
+let lineChart;
+
+
 // DATA STORAGE (IN MEMORY or local )
 
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
@@ -94,3 +101,64 @@ function updateBalance() {
 
 expenses.forEach(addExpenseToDOM);
 updateBalance();
+
+function updateCharts() {
+  const labels = expenses.map(exp => exp.text);
+  const data = expenses.map(exp => exp.amount);
+
+  // Destroy old charts if they exist
+  if (donutChart) donutChart.destroy();
+  if (lineChart) lineChart.destroy();
+
+  // Donut Chart
+  donutChart = new Chart(donutCtx, {
+    type: "doughnut",
+    data: {
+      labels: labels,
+      datasets: [{
+        data: data,
+        backgroundColor: [
+          "#e07a5f",
+          "#f2cc8f",
+          "#81b29a",
+          "#f4a261",
+          "#e76f51"
+        ]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          position: "bottom"
+        }
+      }
+    }
+  });
+
+  // Line Chart
+  lineChart = new Chart(lineCtx, {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: [{
+        label: "Spending",
+        data: data,
+        borderColor: "#e07a5f",
+        backgroundColor: "rgba(224, 122, 95, 0.2)",
+        tension: 0.4,
+        fill: true
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+expenses.forEach(addExpenseToDOM);
+updateBalance();
+updateCharts();
