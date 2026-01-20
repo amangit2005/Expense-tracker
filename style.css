@@ -1,0 +1,101 @@
+/* RESET (important for consistency) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* BODY */
+body {
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+/* APP WRAPPER */
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* HEADER */
+.header {
+  padding: 20px;
+}
+
+.header h1 {
+  font-size: 28px;
+}
+
+.header p {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* BALANCE SECTION */
+.balance {
+  padding: 20px;
+}
+
+.balance-amount {
+  font-size: 32px;
+  margin-top: 10px;
+}
+
+/* ADD EXPENSE */
+.add-expense {
+  padding: 20px;
+}
+
+.add-expense form {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.add-expense input {
+  flex: 1;
+  padding: 10px;
+}
+
+.add-expense button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* DASHBOARD */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* HISTORY */
+.history {
+  padding: 20px;
+}
+
+.expense-list {
+  list-style: none;
+  margin-top: 10px;
+}
+
+/* ANALYTICS */
+.analytics {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* CHART PLACEHOLDERS */
+.chart {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #999;
+}
