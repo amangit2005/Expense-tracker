@@ -99,3 +99,90 @@ body {
   justify-content: center;
   border: 1px dashed #999;
 }
+
+/* WARM THEME VARIABLES */
+:root {
+  --bg-main: #f6f1eb;
+  --card-bg: #ffffff;
+  --primary: #e07a5f;
+  --secondary: #f2cc8f;
+  --text-dark: #3d405b;
+  --text-light: #6c757d;
+}
+
+/* BODY OVERRIDE */
+body {
+  background: var(--bg-main);
+}
+
+/* CARD STYLE (reuse everywhere) */
+.header,
+.balance,
+.add-expense,
+.history,
+.analytics {
+  background: var(--card-bg);
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* HEADER */
+.header h1 {
+  color: var(--text-dark);
+}
+
+.header p {
+  color: var(--text-light);
+}
+
+/* BALANCE */
+.balance h2 {
+  color: var(--text-light);
+}
+
+.balance-amount {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* ADD EXPENSE */
+.add-expense h3 {
+  color: var(--text-dark);
+}
+
+.add-expense input {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.add-expense input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.add-expense button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.add-expense button:hover {
+  opacity: 0.9;
+}
+
+/* DASHBOARD TITLES */
+.history h3,
+.analytics h3 {
+  color: var(--text-dark);
+}
+
+/* CHART BOXES */
+.chart {
+  border: none;
+  background: var(--secondary);
+  color: var(--text-dark);
+  font-weight: bold;
+  border-radius: 12px;
+}
