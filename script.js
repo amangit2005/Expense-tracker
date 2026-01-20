@@ -8,7 +8,11 @@ const expenseList = document.querySelector(".expense-list");
 
 // DATA STORAGE (IN MEMORY or local )
 
-let expenses = [];
+let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+function saveToLocalStorage() {
+  localStorage.setItem("expenses", JSON.stringify(expenses));
+}
 
 // HANDLE FORM SUBMIT 
 
@@ -31,6 +35,7 @@ form.addEventListener("submit", function (e) {
   };
 
   expenses.push(expense);
+  saveToLocalStorage();
 
   addExpenseToDOM(expense);
   updateBalance();
@@ -70,6 +75,7 @@ function removeExpense(id) {
     return exp.id !== id;
   });
 
+  saveToLocalStorage();
   expenseList.innerHTML = "";
   expenses.forEach(addExpenseToDOM);
 
@@ -85,3 +91,6 @@ function updateBalance() {
 
   balanceAmount.textContent = `₹${total}`;
 }
+
+expenses.forEach(addExpenseToDOM);
+updateBalance();
