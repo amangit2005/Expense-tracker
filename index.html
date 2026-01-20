@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. App Wrapper -->
+  <div class="app">
+
+    <!-- 2. Header -->
+    <header class="header">
+      <h1>Expense Tracker</h1>
+      <p>Track your spending wisely</p>
+    </header>
+
+    <!-- 3. Balance / Summary -->
+    <section class="balance">
+      <h2>Total Balance</h2>
+      <p class="balance-amount">₹0</p>
+    </section>
+
+    <!-- 4. Add Expense -->
+    <section class="add-expense">
+      <h3>Add Expense</h3>
+
+      <form>
+        <input type="text" placeholder="Expense name">
+        <input type="number" placeholder="Amount">
+        <button type="submit">Add</button>
+      </form>
+    </section>
+
+    <!-- 5. Main Dashboard -->
+    <main class="dashboard">
+
+      <!-- History -->
+      <section class="history">
+        <h3>History</h3>
+        <ul class="expense-list">
+          <!-- expenses will come here -->
+        </ul>
+      </section>
+
+      <!-- Analytics -->
+      <section class="analytics">
+        <h3>Analytics</h3>
+
+        <div class="chart chart-circle">
+          Circular Chart
+        </div>
+
+        <div class="chart chart-line">
+          Line Chart
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
