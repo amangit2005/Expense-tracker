@@ -8,6 +8,10 @@ const expenseList = document.querySelector(".expense-list");
 
 const donutCtx = document.getElementById("donutChart").getContext("2d");
 const lineCtx = document.getElementById("lineChart").getContext("2d");
+const clearAllBtn = document.getElementById("clearAllBtn");
+const monthlyTotalEl = document.getElementById("monthlyTotal");
+
+
 
 let donutChart;
 let lineChart;
@@ -64,11 +68,13 @@ form.addEventListener("submit", function (e) {
     return;
   }
 
-  const expense = {
-    id: Date.now(),
-    text,
-    amount
-  };
+const expense = {
+  id: Date.now(),
+  text,
+  amount,
+  date: new Date().toISOString()
+};
+
 
   expenses.push(expense);
   saveToLocalStorage();
@@ -86,12 +92,18 @@ form.addEventListener("submit", function (e) {
 function addExpenseToDOM(expense) {
   const li = document.createElement("li");
 
-  li.innerHTML = `
-    <span>${expense.text}</span>
-    <span>₹${expense.amount}</span>
-    <button>❌</button>
-  `;
-  const amountSpan = li.querySelector("span:nth-child(2)");
+li.innerHTML = `
+  <span>
+    ${expense.text}
+    <small style="color:#777; font-size:12px;">
+      (${new Date(expense.date).toLocaleDateString()})
+    </small>
+  </span>
+  <span>₹${expense.amount}</span>
+  <button>❌</button>
+`;
+
+const amountSpan = li.querySelector("span:nth-child(2)");
 
 if (expense.amount < 0) {
   amountSpan.style.color = "green";
@@ -100,16 +112,16 @@ if (expense.amount < 0) {
 }
 
 
-  li.style.display = "grid";
-  li.style.gridTemplateColumns = "1fr auto auto";
-  li.style.alignItems = "center";
-  li.style.gap = "10px";
-  li.style.marginTop = "10px";
-  li.querySelector("button").style.marginLeft = "15px";
+li.style.display = "grid";
+li.style.gridTemplateColumns = "1fr auto auto";
+li.style.alignItems = "center";
+li.style.gap = "10px";
+li.style.marginTop = "10px";
+li.querySelector("button").style.marginLeft = "15px";
 
 
 
-  const deleteBtn = li.querySelector("button");
+const deleteBtn = li.querySelector("button");
 
 // base style
 deleteBtn.style.background = "none";
@@ -163,6 +175,24 @@ function removeExpense(id) {
   updateCharts();
 }
 
+// Add the clear all logic
+clearAllBtn.addEventListener("click", () => {
+  if (expenses.length === 0) {
+    alert("No expenses to clear");
+    return;
+  }
+
+  const confirmClear = confirm("Are you sure you want to delete all expenses?");
+  if (!confirmClear) return;
+
+  expenses = [];
+  localStorage.removeItem("expenses");
+
+  renderExpenses();
+  updateBalance();
+  updateCharts();
+});
+
 
 // UPDATE BALANCE
 
@@ -180,6 +210,35 @@ function updateBalance() {
     balanceAmount.style.color = "#e07a5f"; // warm highlight
   }
 }
+
+function getMonthlyTotal() {
+  const now = new Date();
+  const currentMonth = now.getMonth();
+  const currentYear = now.getFullYear();
+
+  let total = 0;
+
+  expenses.forEach(exp => {
+    if (!exp.date) return;
+
+    const expDate = new Date(exp.date);
+
+    if (
+      expDate.getMonth() === currentMonth &&
+      expDate.getFullYear() === currentYear
+    ) {
+      total += exp.amount;
+    }
+  });
+
+  return total;
+}
+
+function updateMonthlyTotal() {
+  const monthlyTotal = getMonthlyTotal();
+  monthlyTotalEl.textContent = `This month: ₹${monthlyTotal}`;
+}
+
 
 
 

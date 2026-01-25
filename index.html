@@ -21,6 +21,10 @@
     <section class="balance">
       <h2>Total Balance</h2>
       <p class="balance-amount">₹0</p>
+      <p id="monthlyTotal" style="color:#777; font-size:14px;">
+  This month: ₹0
+</p>
+
     </section>
 
     <!-- 4. Add Expense -->
@@ -34,13 +38,19 @@
       </form>
     </section>
 
-    <!-- 5. Main Dashboard -->
-    <main class="dashboard">
+  <!-- 5. Main Dashboard -->
+<main class="dashboard">
 
-      <!-- History -->
-      <section class="history">
-        <h3>History</h3>
-        <ul class="expense-list">
+  <!-- History -->
+<section class="history">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <h3>History</h3>
+    <button id="clearAllBtn">Clear All</button>
+  </div>
+
+  <ul class="expense-list"></ul>
+</section>
+
           <!-- expenses will come here -->
         </ul>
       </section>

@@ -222,3 +222,17 @@ body {
     height: 120px;
   }
 }
+#clearAllBtn {
+  background: none;
+  border: 1px solid #e63946;
+  color: #e63946;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+#clearAllBtn:hover {
+  background: #e63946;
+  color: white;
+}
