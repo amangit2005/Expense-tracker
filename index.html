@@ -24,6 +24,13 @@
       <p id="monthlyTotal" style="color:#777; font-size:14px;">
   This month: ₹0
 </p>
+      <p id="weeklyTotal" style="color:#777; font-size:14px;">
+  This week: ₹0
+</p>
+<p id="yearlyTotal" style="color:#777; font-size:14px;">
+  This year: ₹0
+</p>
+
 
     </section>
 
@@ -32,11 +39,19 @@
       <h3>Add Expense</h3>
 
       <form>
+        <select id="category">
+       <option value="Food">🍔 Food</option>
+       <option value="Travel">🚕 Travel</option>
+       <option value="Study">📚 Study</option>
+       <option value="Shopping">🛍️ Shopping</option>
+       <option value="Other">📦 Other</option>
         <input type="text" placeholder="Expense name">
+    </select>
+
         <input type="number" placeholder="Amount">
         <button type="submit">Add</button>
       </form>
-    </section>
+  
 
   <!-- 5. Main Dashboard -->
 <main class="dashboard">

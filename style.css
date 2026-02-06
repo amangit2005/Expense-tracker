@@ -1,16 +1,19 @@
 /* RESET (important for consistency) */
+
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
 }
 
-/* BODY */
+/* body */
 body {
-  background: #f5f5f5;
-  padding: 20px;
+  background: #f8f9fb;
+  color: #333;
 }
+
 
 /* APP WRAPPER */
 .app {
